@@ -1,0 +1,1373 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>UPACOSMETICS — Korean Beauty Store</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --olive: #576043;
+      --ink: #152017;
+      --paper: #f5f4ee;
+      --acid: #d5e35e;
+      --white: #ffffff;
+      --line: rgba(21, 32, 23, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      width: 100%;
+      font-family: "DM Sans", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .display-font {
+      font-family: "Fraunces", serif;
+    }
+
+    .site-shell {
+      min-height: 100vh;
+      background-color: var(--paper);
+      background-image:
+        linear-gradient(rgba(21, 32, 23, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(21, 32, 23, 0.035) 1px, transparent 1px);
+      background-size: 34px 34px;
+    }
+
+    /* HEADER */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      width: 100%;
+      border-bottom: 1px solid var(--line);
+      background: rgba(245, 244, 238, 0.96);
+      backdrop-filter: blur(12px);
+    }
+
+    nav {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 17px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .logo {
+      font-size: 19px;
+      font-weight: 700;
+      letter-spacing: -0.07em;
+      white-space: nowrap;
+    }
+
+    .logo span {
+      color: var(--olive);
+    }
+
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      gap: 34px;
+    }
+
+    .nav-link {
+      position: relative;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 100%;
+      height: 1px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 180ms ease;
+    }
+
+    .nav-link:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .cart-button {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 9px 13px;
+      border: 1px solid var(--ink);
+      background: transparent;
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      transition: 180ms ease;
+    }
+
+    .cart-button:hover {
+      background: var(--ink);
+      color: white;
+    }
+
+    .cart-count {
+      min-width: 18px;
+      text-align: center;
+    }
+
+    /* HERO */
+
+    .hero-section {
+      width: 100%;
+      padding: 20px 32px 64px;
+    }
+
+    .hero-grid {
+      max-width: 1280px;
+      min-height: 610px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      overflow: hidden;
+      border: 1px solid var(--ink);
+      background: var(--olive);
+    }
+
+    .hero-copy {
+      position: relative;
+      min-height: 610px;
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: var(--paper);
+      overflow: hidden;
+    }
+
+    .grain {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.18;
+      background-image:
+        radial-gradient(rgba(255,255,255,.52) .65px, transparent .65px);
+      background-size: 5px 5px;
+      mix-blend-mode: soft-light;
+    }
+
+    .eyebrow {
+      position: relative;
+      max-width: 380px;
+      padding-left: 13px;
+      border-left: 1px solid var(--acid);
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.5;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-title {
+      max-width: 700px;
+      margin: 0;
+      font-family: "Fraunces", serif;
+      font-size: clamp(58px, 7vw, 105px);
+      line-height: 0.88;
+      letter-spacing: -0.075em;
+    }
+
+    .hero-description {
+      max-width: 530px;
+      margin: 28px 0 0;
+      color: rgba(245,244,238,.84);
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    .hero-button {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      gap: 12px;
+      margin-top: 30px;
+      padding: 13px 20px;
+      border: 1px solid var(--acid);
+      color: var(--paper);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      transition: 180ms ease;
+    }
+
+    .hero-button:hover {
+      background: var(--acid);
+      color: var(--ink);
+    }
+
+    .hero-note {
+      position: relative;
+      margin: 0;
+      color: var(--acid);
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 610px;
+      overflow: hidden;
+      border-left: 1px solid var(--ink);
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          to top,
+          rgba(21,32,23,.65),
+          rgba(21,32,23,0) 60%
+        );
+    }
+
+    .hero-caption {
+      position: absolute;
+      left: 32px;
+      right: 32px;
+      bottom: 28px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      color: white;
+    }
+
+    .hero-caption p {
+      max-width: 210px;
+      margin: 0;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.6;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .sparkle {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255,255,255,.6);
+      border-radius: 50%;
+      background: rgba(21,32,23,.4);
+      font-size: 22px;
+    }
+
+    /* BENEFITS */
+
+    .benefit-strip {
+      width: 100%;
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      background: var(--acid);
+    }
+
+    .benefits {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .benefit {
+      padding: 21px 20px;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .benefit + .benefit {
+      border-left: 1px solid var(--ink);
+    }
+
+    /* CATALOG */
+
+    .catalog {
+      width: 100%;
+      padding: 95px 32px;
+    }
+
+    .catalog-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .catalog-header {
+      margin-bottom: 42px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--ink);
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .catalog-eyebrow {
+      margin: 0;
+      color: var(--olive);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
+    .catalog-title {
+      max-width: 650px;
+      margin: 12px 0 0;
+      font-family: "Fraunces", serif;
+      font-size: clamp(48px, 6vw, 78px);
+      line-height: .95;
+      letter-spacing: -.06em;
+    }
+
+    .catalog-note {
+      max-width: 320px;
+      margin: 0;
+      color: rgba(21,32,23,.68);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .product-card {
+      overflow: hidden;
+      border: 1px solid var(--ink);
+      background: white;
+      transition: transform 220ms ease, box-shadow 220ms ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 10px 11px 0 var(--ink);
+    }
+
+    .product-image-wrap {
+      position: relative;
+      aspect-ratio: 4 / 4.65;
+      overflow: hidden;
+      background: #e6e5dc;
+    }
+
+    .product-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 500ms cubic-bezier(.2,.8,.2,1);
+    }
+
+    .product-card:hover .product-image {
+      transform: scale(1.055);
+    }
+
+    .product-tag {
+      position: absolute;
+      left: 16px;
+      top: 16px;
+      z-index: 2;
+      padding: 7px 11px;
+      background: var(--ink);
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+
+    .product-tag.green {
+      background: var(--olive);
+    }
+
+    .product-tag.yellow {
+      background: var(--acid);
+      color: var(--ink);
+    }
+
+    .product-info {
+      padding: 20px;
+    }
+
+    .product-brand {
+      margin: 0;
+      color: var(--olive);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+    }
+
+    .product-name {
+      min-height: 50px;
+      margin: 8px 0 0;
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .product-bottom {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(21,32,23,.15);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .product-price {
+      margin: 0;
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .add-to-cart {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 12px;
+      border: 1px solid var(--ink);
+      background: transparent;
+      color: var(--ink);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      cursor: pointer;
+      transition: 180ms ease;
+    }
+
+    .add-to-cart:hover {
+      background: var(--ink);
+      color: white;
+    }
+
+    /* APPROACH */
+
+    .approach {
+      width: 100%;
+      padding: 95px 32px;
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .approach-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: .7fr 1.3fr;
+      gap: 80px;
+    }
+
+    .approach-label {
+      margin: 0;
+      padding-left: 13px;
+      border-left: 1px solid var(--acid);
+      color: var(--acid);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+    }
+
+    .approach-title {
+      max-width: 900px;
+      margin: 0;
+      font-family: "Fraunces", serif;
+      font-size: clamp(45px, 6vw, 76px);
+      line-height: .96;
+      letter-spacing: -.055em;
+    }
+
+    .approach-text {
+      max-width: 700px;
+      margin: 28px 0 0;
+      color: rgba(245,244,238,.74);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .stats {
+      margin-top: 42px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .stat {
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,.3);
+      color: var(--acid);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      line-height: 1.5;
+    }
+
+    /* FOOTER */
+
+    footer {
+      width: 100%;
+      padding: 48px 32px 25px;
+      background: var(--olive);
+      color: var(--paper);
+    }
+
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.3fr .7fr .7fr;
+      gap: 60px;
+    }
+
+    .footer-brand {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -.06em;
+    }
+
+    .footer-text {
+      max-width: 430px;
+      margin: 16px 0 0;
+      color: rgba(245,244,238,.76);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .footer-title {
+      margin: 0;
+      color: var(--acid);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+    }
+
+    .footer-email {
+      display: inline-block;
+      margin-top: 15px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid rgba(245,244,238,.45);
+      font-size: 14px;
+      transition: 180ms ease;
+    }
+
+    .footer-email:hover {
+      color: var(--acid);
+    }
+
+    .socials {
+      margin-top: 15px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .social {
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(245,244,238,.5);
+      font-size: 13px;
+      font-weight: 700;
+      transition: 180ms ease;
+    }
+
+    .social:hover {
+      background: var(--acid);
+      color: var(--ink);
+    }
+
+    .footer-bottom {
+      max-width: 1280px;
+      margin: 42px auto 0;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.2);
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: rgba(245,244,238,.6);
+      font-size: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+
+    /* TOAST */
+
+    #toast {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 999;
+      max-width: calc(100% - 40px);
+      padding: 13px 17px;
+      border: 1px solid var(--ink);
+      background: var(--acid);
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 700;
+      box-shadow: 5px 5px 0 var(--ink);
+      opacity: 0;
+      transform: translateY(12px);
+      pointer-events: none;
+      transition: opacity 200ms ease, transform 200ms ease;
+    }
+
+    #toast.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 800px) {
+
+      nav {
+        padding: 15px 18px;
+      }
+
+      .desktop-nav {
+        display: none;
+      }
+
+      .hero-section {
+        padding: 15px 15px 35px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy {
+        min-height: 520px;
+        padding: 30px;
+      }
+
+      .hero-title {
+        font-size: clamp(55px, 16vw, 85px);
+      }
+
+      .hero-visual {
+        min-height: 430px;
+        border-top: 1px solid var(--ink);
+        border-left: 0;
+      }
+
+      .benefits {
+        grid-template-columns: 1fr;
+      }
+
+      .benefit + .benefit {
+        border-top: 1px solid var(--ink);
+        border-left: 0;
+      }
+
+      .catalog {
+        padding: 65px 18px;
+      }
+
+      .catalog-header {
+        display: block;
+      }
+
+      .catalog-note {
+        margin-top: 20px;
+      }
+
+      .products {
+        grid-template-columns: 1fr;
+      }
+
+      .approach {
+        padding: 65px 18px;
+      }
+
+      .approach-inner {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        padding: 40px 18px 20px;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        margin-top: 35px;
+      }
+    }
+
+    @media (max-width: 430px) {
+
+      .logo {
+        font-size: 16px;
+      }
+
+      .cart-button {
+        padding: 8px 9px;
+      }
+
+      .cart-button span:nth-child(2) {
+        display: none;
+      }
+
+      .hero-copy {
+        min-height: 500px;
+      }
+
+      .hero-title {
+        font-size: 52px;
+      }
+
+      .hero-description {
+        font-size: 14px;
+      }
+
+      .product-bottom {
+        align-items: flex-start;
+      }
+
+      .product-price {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="site-shell">
+
+  <!-- HEADER -->
+  <header>
+    <nav>
+      <a href="#top" class="logo">
+        UPACOSMETICS<span></span>
+      </a>
+
+      <div class="desktop-nav">
+        <a href="#catalog" class="nav-link">Каталог</a>
+        <a href="#approach" class="nav-link">Подход</a>
+        <a href="#contacts" class="nav-link">Контакты</a>
+      </div>
+
+      <button id="cart-button" class="cart-button" type="button">
+        🛍
+        <span>Корзина</span>
+        <span id="cart-count" class="cart-count">0</span>
+      </button>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero-section">
+
+      <div class="hero-grid">
+
+        <div class="hero-copy">
+
+          <div class="grain"></div>
+
+          <p class="eyebrow">
+            Корейская косметика нового поколения
+          </p>
+
+          <div class="hero-content">
+
+            <h1 class="hero-title">
+              Уход,<br>
+              который<br>
+              работает.
+            </h1>
+
+            <p class="hero-description">
+              Отобранная корейская косметика для здоровой,
+              сияющей и ухоженной кожи. Только эффективные
+              формулы, понятный состав и продукты, которые
+              хочется использовать каждый день.
+            </p>
+
+            <a href="#catalog" class="hero-button">
+              Смотреть каталог
+              <span>↘</span>
+            </a>
+
+          </div>
+
+          <p class="hero-note">
+            K-Beauty · Skin first · 100% эстетика
+          </p>
+
+        </div>
+
+        <div class="hero-visual">
+8c89e6adf883
+          <img
+            src="dior.webp"
+            alt="Корейская косметика и уход за кожей"
+          >
+
+          <div class="hero-overlay"></div>
+
+          <div class="hero-caption">
+            <p>
+              Минимализм.<br>
+              Эффективность.<br>
+              Корейский подход.
+            </p>
+
+            <div class="sparkle">✦</div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- BENEFITS -->
+    <section class="benefit-strip">
+
+      <div class="benefits">
+
+        <div class="benefit">
+          Оригинальные продукты
+        </div>
+
+        <div class="benefit">
+          Доставка по всему Кыргызстану
+        </div>
+
+        <div class="benefit">
+          Подбор ухода без лишнего
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CATALOG -->
+    <section id="catalog" class="catalog">
+
+      <div class="catalog-inner">
+
+        <div class="catalog-header">
+
+          <div>
+            <p class="catalog-eyebrow">
+              Избранное
+            </p>
+
+            <h2 class="catalog-title">
+              Три продукта,<br>
+              с которых стоит начать.
+            </h2>
+          </div>
+
+          <p class="catalog-note">
+            Базовый набор для сияющей и увлажнённой кожи.
+            Выбираем продукты не по хайпу, а по составу
+            и результату.
+          </p>
+
+        </div>
+
+
+        <div class="products">
+
+          <!-- PRODUCT 1 -->
+          <article class="product-card">
+
+            <div class="product-image-wrap">
+
+              <span class="product-tag">
+                Bestseller
+              </span>
+
+              <img
+                class="product-image"
+                src="R.png"
+                alt="Сыворотка Dr. Althea"
+                loading="lazy"
+              >
+
+            </div>
+
+            <div class="product-info">
+
+              <p class="product-brand">
+                Dr. Althea
+              </p>
+
+              <h3 class="product-name">
+                Vitamin C Boosting Serum
+              </h3>
+
+              <div class="product-bottom">
+
+                <p class="product-price">
+                  2 140 сом
+                </p>
+
+                <button
+                  class="add-to-cart"
+                  data-product="Dr. Althea Vitamin C Boosting Serum"
+                  data-price="2140"
+                  type="button"
+                >
+                  ＋ В корзину
+                </button>
+
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <!-- PRODUCT 2 -->
+          <article class="product-card">
+
+            <div class="product-image-wrap">
+
+              <span class="product-tag green">
+                Calm skin
+              </span>
+
+              <img
+                class="product-image"
+                src="71XlpTrHzyL.-SL1500--18768.jpg"
+                alt="Увлажняющий бальзам Pyunkang Yul"
+                loading="lazy"
+              >
+
+            </div>
+
+            <div class="product-info">
+
+              <p class="product-brand">
+                Pyunkang Yul
+              </p>
+
+              <h3 class="product-name">
+                Calming Moisture Repair Balm
+              </h3>
+
+              <div class="product-bottom">
+
+                <p class="product-price">
+                  2 300 сом
+                </p>
+
+                <button
+                  class="add-to-cart"
+                  data-product="Pyunkang Yul Calming Moisture Repair Balm"
+                  data-price="2300"
+                  type="button"
+                >
+                  ＋ В корзину
+                </button>
+
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <!-- PRODUCT 3 -->
+          <article class="product-card">
+
+            <div class="product-image-wrap">
+
+              <span class="product-tag yellow">
+                New
+              </span>
+
+              <img
+                class="product-image"
+                src="dtp.avif"
+                alt="Тонер HISTOLAB"
+                loading="lazy"
+              >
+
+            </div>
+
+            <div class="product-info">
+
+              <p class="product-brand">
+                HISTOLAB
+              </p>
+
+              <h3 class="product-name">
+                Beta Fresh Toner
+              </h3>
+
+              <div class="product-bottom">
+
+                <p class="product-price">
+                  2 890 сом
+                </p>
+
+                <button
+                  class="add-to-cart"
+                  data-product="HISTOLAB Beta Fresh Toner"
+                  data-price="2890"
+                  type="button"
+                >
+                  ＋ В корзину
+                </button>
+
+              </div>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- APPROACH -->
+    <section id="approach" class="approach">
+
+      <div class="approach-inner">
+
+        <p class="approach-label">
+          Наш подход
+        </p>
+
+        <div>
+
+          <h2 class="approach-title">
+            Меньше баночек.<br>
+            Больше результата.
+          </h2>
+
+          <p class="approach-text">
+            Мы не верим в десять шагов ухода ради десяти шагов.
+            Хорошая рутина должна быть понятной, приятной
+            и действительно работать. Поэтому мы собираем
+            коллекцию продуктов с сильными формулами,
+            комфортными текстурами и понятным назначением.
+          </p>
+
+          <div class="stats">
+
+            <div class="stat">
+              K-Beauty<br>
+              формулы и ингредиенты
+            </div>
+
+            <div class="stat">
+              Skin first<br>
+              подход к уходу
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer id="contacts">
+
+    <div class="footer-inner">
+
+      <div>
+
+        <p class="footer-brand">
+          UPACOSMETICS
+        </p>
+
+        <p class="footer-text">
+          Корейская косметика для тех, кто выбирает
+          эффективный уход, красивую эстетику и
+          понятные решения для кожи.
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <h2 class="footer-title">
+          Контакты
+        </h2>
+
+        <a
+          class="footer-email"
+          href="mailto:Instagram"
+        >
+          0505464440
+        </a>
+
+      </div>
+
+
+      <div>
+
+        <h2 class="footer-title">
+          Мы в соцсетях
+        </h2>
+
+        <div class="socials">
+
+          <a
+            class="social"
+            href="https://instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+          >
+            <img
+          src="instagram-circle.png.crdownload"
+          alt="Корейская косметика и уход за кожей"
+        >
+          </a>
+
+          <a
+            class="social"
+            href="https://t.me"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Telegram"
+          >
+            <img
+          src="telegram.png.crdownload"
+          alt="Корейская косметика и уход за кожей"
+        >
+          </a>
+
+          <a
+            class="social"
+            href="https://wa.me"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="VK"
+          >
+            <img
+          src="whatsapp.png.crdownload"
+          alt="Корейская косметика и уход за кожей"
+        >
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+      <p>
+        © 2026 UPACOSMETICS
+      </p>
+
+      <p>
+        Манас ул.Н.Айтматова9б
+      </p>
+
+    </div>
+
+  </footer>
+
+
+  <!-- TOAST -->
+  <div id="toast">
+    <span id="toast-message"></span>
+  </div>
+
+</div>
+
+
+<script>
+
+  let cartCount = 0;
+  let toastTimer;
+
+  const cartCountElement =
+    document.getElementById("cart-count");
+
+  const toast =
+    document.getElementById("toast");
+
+  const toastMessage =
+    document.getElementById("toast-message");
+
+
+  function showToast(message) {
+
+    toastMessage.textContent = message;
+
+    toast.classList.add("visible");
+
+    clearTimeout(toastTimer);
+
+    toastTimer = setTimeout(() => {
+      toast.classList.remove("visible");
+    }, 2600);
+
+  }
+
+
+  /* ADD TO CART */
+
+  document.querySelectorAll(".add-to-cart").forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      cartCount++;
+
+      cartCountElement.textContent = cartCount;
+
+      const product =
+        button.dataset.product;
+
+      showToast(
+        product + " добавлен в корзину"
+      );
+
+    });
+
+  });
+
+
+  /* CART */
+
+  document
+    .getElementById("cart-button")
+    .addEventListener("click", () => {
+
+      if (cartCount === 0) {
+
+        showToast("Корзина пока пуста");
+
+      } else {
+
+        showToast(
+          "В корзине товаров: " + cartCount
+        );
+
+      }
+
+    });
+
+
+  /* IMAGE ERROR FALLBACK */
+
+  document
+    .querySelectorAll("img")
+    .forEach(image => {
+
+      image.addEventListener("error", () => {
+
+        image.style.background = "#e6e5dc";
+
+        image.removeAttribute("src");
+
+      });
+
+    });
+
+</script>
+
+</body>
+</html>
